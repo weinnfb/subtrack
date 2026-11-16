@@ -5,6 +5,7 @@ import { createSettingsPage } from '../pages/settings.js';
 import { initializeIcons } from '../utils/icons.js';
 import { initializeSpendingChart } from '../utils/charts.js';
 import { initializeMonthlySpendingChart } from '../utils/charts.js';
+import { initializeSubscriptionGrowthChart } from '../components/subscriptionGrowth.js';
 
 
 export function getCurrentPage() {
@@ -28,5 +29,6 @@ export function renderPage() {
 
     initializeIcons();
     initializeSpendingChart();
-    initializeMonthlySpendingChart()
+    initializeMonthlySpendingChart();
+    initializeSubscriptionGrowthChart();
 }

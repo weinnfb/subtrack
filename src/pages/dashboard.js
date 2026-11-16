@@ -10,6 +10,8 @@ import { spendingHistory } from '../mocks/spendingHistory.js';
 import { createMonthlySpendingChart } from '../components/monthlySpendingChart.js';
 import { createBudgetProgress } from '../components/budgetProgress.js';
 import { mockUserSettings } from '../mocks/userSettings.js';
+import { createExclusiveDeals } from '../components/exclusiveDeals.js';
+import { createSubscriptionGrowth } from '../components/subscriptionGrowth.js';
 
 
 
@@ -78,6 +80,11 @@ export function createDashboardPage() {
             ${createUpcomingRenewals()}
         </div>
         ${createSpendingByCategory()}
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4">
+        ${createExclusiveDeals()}
+        ${createSubscriptionGrowth()}
     </div>
   `;
 }

@@ -1,6 +1,55 @@
 
 import { mockSubscriptions } from '../mocks/subscriptions.js';
 
+function getNextRenewalDate(subscription) {
+  const paymentDate = new Date(`${subscription.nextPaymentDate}T12:00:00`);
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const paymentDay = paymentDate.getDate();
+
+  while (paymentDate < today) {
+    if (subscription.billingCycle === 'monthly') {
+      const year = paymentDate.getFullYear();
+      const nextMonth = paymentDate.getMonth() + 1;
+
+      const daysInNextMonth = new Date(
+        year,
+        nextMonth + 1,
+        0
+      ).getDate();
+
+      if (paymentDay > daysInNextMonth) {
+        paymentDate.setFullYear(year, nextMonth + 1, 1);
+      } else {
+        paymentDate.setFullYear(year, nextMonth, paymentDay);
+      }
+
+    } else if (subscription.billingCycle === 'annual') {
+      const year = paymentDate.getFullYear() + 1;
+      const month = paymentDate.getMonth();
+
+      const daysInMonth = new Date(
+        year,
+        month + 1,
+        0
+      ).getDate();
+
+      if (paymentDay > daysInMonth) {
+        paymentDate.setFullYear(year, month + 1, 1);
+      } else {
+        paymentDate.setFullYear(year, month, paymentDay);
+      }
+
+    } else {
+      return null;
+    }
+  }
+
+  return paymentDate;
+}
+
 export function createUpcomingRenewals() {
   const today = new Date();
 
@@ -24,27 +73,24 @@ export function createUpcomingRenewals() {
 
       <div class="flex flex-col divide-y divide-[var(--color-border)]">
         ${mockSubscriptions
-          .filter(subscription =>
-            subscription.status === 'active' &&
-            subscription.nextPaymentDate >= todayString
-          )
-          .sort((a, b) =>
-            a.nextPaymentDate.localeCompare(b.nextPaymentDate)
-          )
-          .slice(0, 3)
-          .map(subscription => {
-            const formattedDate = new Intl.DateTimeFormat('en-US', {
-              month: 'long',
-              day: 'numeric',
-              year: 'numeric'
-            }).format(new Date(`${subscription.nextPaymentDate}T12:00:00`));
+      .filter(subscription => subscription.status === 'active')
+      .sort((a, b) =>
+        getNextRenewalDate(a) - getNextRenewalDate(b)
+      )
+      .slice(0, 3)
+      .map(subscription => {
+        const formattedDate = new Intl.DateTimeFormat('en-US', {
+          month: 'long',
+          day: 'numeric',
+          year: 'numeric'
+        }).format(getNextRenewalDate(subscription));
 
-            const formattedPrice = new Intl.NumberFormat('en-US', {
-              style: 'currency',
-              currency: subscription.currency
-            }).format(subscription.price);
+        const formattedPrice = new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: subscription.currency
+        }).format(subscription.price);
 
-            return `
+        return `
               <div class="flex items-center justify-between gap-4 py-4">
 
                 <!-- Logo and Name -->
@@ -107,7 +153,7 @@ export function createUpcomingRenewals() {
                 </div>
               </div>
             `;
-          }).join('')}
+      }).join('')}
       </div>
 
       <a

@@ -6,10 +6,10 @@ import { initializeIcons } from './utils/icons.js';
 
 document.documentElement.dataset.theme = 'dark';
 document.querySelector('#app').innerHTML = `
-  <div class="flex min-h-screen bg-[var(--color-background)] p-4 gap-4">
+  <div class="flex h-screen overflow-hidden bg-[var(--color-background)] p-4 gap-4">
     ${createSidebar()}
 
-    <main id="page-content" class="flex-1 p-8">
+    <main id="page-content" class="flex-1 p-8 min-h-0 overflow-y-auto">
       <h1 class="text-4xl font-bold text-[var(--color-brand)]">
         Dashboard
       </h1>
