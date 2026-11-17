@@ -1,47 +1,60 @@
 @import "tailwindcss";
 
 :root {
-    --color-brand: #7856F0;
-    --color-on-brand: #FFFFFF;
-  
-    --color-background: #F8F7FB;
-    --color-surface: #FFFFFF;
-    --color-surface-hover: #F0EDF7;
-  
-    --color-text: #1C1925;
-    --color-text-muted: #777384;
-    --color-border: #E7E3EE;
-  }
-  
-  [data-theme="dark"] {
-    --color-brand: #8B6CFF;
-    --color-on-brand: #FFFFFF;
-  
-    --color-background: #0E0E13;
-    --color-surface: #17161F;
-    --color-surface-hover: #23212C;
-  
-    --color-text: #F0EEF5;
-    --color-text-muted: #9996A8;
-    --color-border: #292733;
-  }
+  --color-brand: #7856F0;
+  --color-on-brand: #FFFFFF;
 
-  body {
-    background-color: var(--color-background);
-    color: var(--color-text);
-  }
+  --color-background: #F8F7FB;
+  --color-surface: #FFFFFF;
+  --color-surface-hover: #F0EDF7;
 
-  .nav-link.active {
-    background-color: var(--color-background);
-    color: var(--color-text);
-    font-weight: 600;
-  }
-  
-  .nav-link:hover:not(.active) {
-    background-color: var(--color-surface-hover);
-  };
+  --color-text: #1C1925;
+  --color-text-muted: #777384;
+  --color-border: #E7E3EE;
+}
 
-  .nav-link.active svg {
-    color: var(--color-brand);
-  };
+[data-theme="dark"] {
+  --color-brand: #8B6CFF;
+  --color-on-brand: #FFFFFF;
 
+  --color-background: #0E0E13;
+  --color-surface: #17161F;
+  --color-surface-hover: #23212C;
+
+  --color-text: #F0EEF5;
+  --color-text-muted: #9996A8;
+  --color-border: #292733;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+.nav-link.active {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-weight: 600;
+}
+
+.nav-link:hover:not(.active) {
+  background-color: var(--color-surface-hover);
+}
+
+;
+
+.nav-link.active svg {
+  color: var(--color-brand);
+}
+
+;
+
+.category-filter {
+  background-color: var(--color-surface-hover);
+  color: var(--color-text);
+}
+
+.category-filter.category-active {
+  background-color: var(--color-brand);
+  color: white;
+}

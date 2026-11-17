@@ -1,7 +1,7 @@
 
 import { mockSubscriptions } from '../mocks/subscriptions.js';
 
-function getNextRenewalDate(subscription) {
+export function getNextRenewalDate(subscription) {
   const paymentDate = new Date(`${subscription.nextPaymentDate}T12:00:00`);
 
   const today = new Date();
@@ -92,8 +92,6 @@ export function createUpcomingRenewals() {
 
         return `
               <div class="flex items-center justify-between gap-4 py-4">
-
-                <!-- Logo and Name -->
                 <div class="flex items-center gap-3 min-w-0">
                   <div class="flex items-center justify-center h-12 w-12 shrink-0 rounded-xl bg-[var(--color-brand)] text-white font-bold text-lg">
                     ${subscription.name[0]}

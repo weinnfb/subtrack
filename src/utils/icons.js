@@ -14,7 +14,10 @@ import {
     Coins,
     Sparkles,
     X,
-    RefreshCw
+    RefreshCw,
+    Pause,
+    Trash,
+    Inbox
   } from 'lucide';
 
 const icons = {
@@ -32,7 +35,10 @@ const icons = {
     Coins,
     Sparkles,
     X,
-    RefreshCw
+    RefreshCw,
+    Pause,
+    Trash,
+    Inbox
 };
 
 export function initializeIcons() {
