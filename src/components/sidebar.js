@@ -35,6 +35,20 @@ export function createSidebar() {
             </div>
            <h2 class="text-xl font-bold text-[var(--color-text)]">SubTrack</h2>
         </div>
+
+        <div class="relative mb-4">
+            <i
+                data-lucide="search"
+                class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[var(--color-text-muted)] pointer-events-none"
+            ></i>
+
+            <input
+                type="search"
+                id="sidebar-search"
+                placeholder="Search"
+                class="w-full bg-[var(--color-surface-hover)] text-[var(--color-text)] placeholder:text-[var(--color-text-muted)] rounded-xl py-3 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-[var(--color-brand)]"
+            />
+        </div>
         
 <nav>
   <div class="divide-y divide-[var(--color-border)]">
@@ -71,3 +85,17 @@ export function createSidebar() {
       </aside>
     `;
 };
+
+export function initializeSidebarSearch() {
+  const searchInput = document.getElementById('sidebar-search');
+
+  if (!searchInput) return;
+
+  searchInput.addEventListener('input', () => {
+    const searchValue = searchInput.value;
+    if (searchValue.trim() !== '') {
+      window.location.hash = '#subscriptions';
+  }
+  document.dispatchEvent(new Event('subscription-search'));
+});
+}

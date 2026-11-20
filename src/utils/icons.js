@@ -17,7 +17,9 @@ import {
     RefreshCw,
     Pause,
     Trash,
-    Inbox
+    Inbox,
+    ChevronDown,
+    Search
   } from 'lucide';
 
 const icons = {
@@ -38,7 +40,9 @@ const icons = {
     RefreshCw,
     Pause,
     Trash,
-    Inbox
+    Inbox,
+    ChevronDown,
+    Search
 };
 
 export function initializeIcons() {
