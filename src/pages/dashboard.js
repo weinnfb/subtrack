@@ -34,7 +34,8 @@ export function createDashboardPage() {
         ${createButton({
             label: 'New Subscription',
             icon: 'plus',
-            variant: 'primary'
+            variant: 'primary',
+            action: 'open-subscription-modal'
         })}
       `
     })}

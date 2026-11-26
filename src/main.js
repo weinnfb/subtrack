@@ -1,10 +1,11 @@
 import './style.css';
+import 'flatpickr/dist/themes/dark.css';
 import { createSidebar } from './components/sidebar';
 import { updateActiveLink } from './navigations/activeLinks';
 import { renderPage } from './navigations/router';
 import { initializeIcons } from './utils/icons.js';
 import { initializeSidebarSearch } from './components/sidebar';
-import { createSubscriptionModal } from './components/subscriptionModal.js';
+import { createSubscriptionModal, initializeSubscriptionModal} from './components/subscriptionModal.js';
 
 document.documentElement.dataset.theme = 'dark';
 document.querySelector('#app').innerHTML = `
@@ -26,6 +27,7 @@ updateActiveLink();
 renderPage();
 initializeIcons();
 initializeSidebarSearch();
+initializeSubscriptionModal();
 
 
 window.addEventListener('hashchange', updateActiveLink);

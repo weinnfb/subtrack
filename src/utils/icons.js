@@ -19,7 +19,9 @@ import {
     Trash,
     Inbox,
     ChevronDown,
-    Search
+    Search,
+    Monitor,
+    CalendarSync
   } from 'lucide';
 
 const icons = {
@@ -42,7 +44,9 @@ const icons = {
     Trash,
     Inbox,
     ChevronDown,
-    Search
+    Search,
+    Monitor,
+    CalendarSync
 };
 
 export function initializeIcons() {
